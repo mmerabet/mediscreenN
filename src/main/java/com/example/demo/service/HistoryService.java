@@ -75,6 +75,7 @@ public class HistoryService {
                     .collect(Collectors.toList());
 
             consultation1.setDate(historyDTO.getDate());
+            consultation1.setDate(LocalDate.now());
             consultation1.setRecommendations(historyDTO.getRecommendations());
             consultation1.setObservations(historyDTO.getObservations());
             newConsultations.add(consultation1);
