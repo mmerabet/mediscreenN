@@ -71,10 +71,9 @@ public class HistoryService {
                     .findAny().get();
 
             List<Consultation> newConsultations = history.getConsultations().stream()
-                    .filter(consultation -> consultation.getId().equals(historyDTO.getIdConsultation()))
+                    .filter(consultation -> !consultation.getId().equals(historyDTO.getIdConsultation()))
                     .collect(Collectors.toList());
 
-            consultation1.setDate(historyDTO.getDate());
             consultation1.setDate(LocalDate.now());
             consultation1.setRecommendations(historyDTO.getRecommendations());
             consultation1.setObservations(historyDTO.getObservations());
