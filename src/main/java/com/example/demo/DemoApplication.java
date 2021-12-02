@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import com.example.demo.utils.DateTraitement;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -14,6 +15,8 @@ public class DemoApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);
+
+	new DateTraitement().calculeAge("1989-04-13");
 	}
 	@Bean
 	public CorsFilter corsFilter() {
@@ -26,4 +29,5 @@ public class DemoApplication {
 		source.registerCorsConfiguration("/**", configuration);
 		return new CorsFilter(source);
 	}
+
 }

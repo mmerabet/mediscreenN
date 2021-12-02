@@ -8,6 +8,7 @@ import com.example.demo.repo.HistoryRepository;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -28,8 +29,11 @@ public class HistoryService {
 
     public History addHistory(HistoryDTO historyDTO) {
         Consultation newConsultation = new Consultation();
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate dateNow =  LocalDate.now();
+        String d2 = dateTimeFormatter.format(dateNow);
         newConsultation.setId(UUID.randomUUID().toString());
-        newConsultation.setDate(LocalDate.now());
+        newConsultation.setDate(d2);
         newConsultation.setRecommendations(historyDTO.getRecommendations());
         newConsultation.setObservations(historyDTO.getObservations());
         if (historyRepository.existsById(historyDTO.getIdHistory())) {
@@ -74,7 +78,7 @@ public class HistoryService {
                     .filter(consultation -> !consultation.getId().equals(historyDTO.getIdConsultation()))
                     .collect(Collectors.toList());
 
-            consultation1.setDate(LocalDate.now());
+            consultation1.setDate(LocalDate.now().toString());
             consultation1.setRecommendations(historyDTO.getRecommendations());
             consultation1.setObservations(historyDTO.getObservations());
             newConsultations.add(consultation1);
