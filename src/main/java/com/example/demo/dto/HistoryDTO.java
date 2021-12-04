@@ -8,5 +8,4 @@ public class HistoryDTO {
     private String idConsultation;
     private String recommendations;
     private String observations;
-    private String date;
 }

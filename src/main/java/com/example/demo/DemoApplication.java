@@ -15,8 +15,6 @@ public class DemoApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);
-
-	new DateTraitement().calculeAge("1989-04-13");
 	}
 	@Bean
 	public CorsFilter corsFilter() {
